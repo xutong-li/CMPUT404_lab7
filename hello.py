@@ -58,9 +58,14 @@ class TodoList(Resource):
         todo_id = max(TODOs.keys()) + 1
         return add_todo(todo_id), 201
 
-
+class HelloWorld(Resource):
+    def get(self):
+        return {'hello': 'world'}
+    
+api.add_resource(HelloWorld, "/")
 api.add_resource(Todo, "/todos/<int:todo_id>")
 api.add_resource(TodoList, "/todos")
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
